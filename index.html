@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maryorie & Anthony ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Dancing+Script:wght@400;600;700&family=Lora:ital,wght@0,400;1,400;1,600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --rose:      #e8a0b0;
+  --rose-deep: #c96f8a;
+  --rose-pale: #fce8ef;
+  --rose-mid:  #f0c0ce;
+  --blush:     #fdf0f4;
+  --cream:     #faf7f5;
+  --sand:      #e8d5c0;
+  --taupe:     #7a5c6a;
+  --text-dark: #3a2632;
+  --text-mid:  #7a5c6a;
+  --text-light:#b09aaa;
+  --white:     #ffffff;
+  --gold:      #d4a96a;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Cormorant Garamond', serif;
+  background-color: var(--blush);
+  color: var(--text-dark);
+  overflow-x: hidden;
+}
+
+/* ── GRAIN OVERLAY ── */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.1rem 2.5rem;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(253,240,244,0.88);
+  backdrop-filter: blur(16px);
+  border-bottom: 0.5px solid rgba(232,160,176,0.25);
+}
+.nav-logo {
+  font-family: 'Dancing Script', cursive;
+  font-size: 1.35rem; color: var(--taupe); text-decoration: none;
+}
+.nav-links { display: flex; gap: 2rem; list-style: none; }
+.nav-links a {
+  font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+  color: var(--text-light); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--rose-deep); }
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  position: relative; padding: 3rem 2rem; text-align: center; overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0; z-index: 0;
+  background:
+    radial-gradient(ellipse 65% 55% at 10% 20%, rgba(232,160,176,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 55% 50% at 90% 80%, rgba(212,169,106,0.15) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 40% at 55% 50%, rgba(248,225,232,0.4) 0%, transparent 70%),
+    var(--blush);
+}
+/* Petal decorations */
+.petal {
+  position: absolute; pointer-events: none; user-select: none;
+  font-size: 1.2rem; opacity: 0.35;
+  animation: float 8s ease-in-out infinite;
+}
+.petal:nth-child(1) { top: 12%; left: 8%;  animation-delay: 0s; }
+.petal:nth-child(2) { top: 25%; right: 9%; animation-delay: 1.5s; font-size: 0.9rem; }
+.petal:nth-child(3) { bottom: 30%; left: 5%; animation-delay: 3s; font-size: 0.8rem; }
+.petal:nth-child(4) { bottom: 20%; right: 7%; animation-delay: 2s; }
+.petal:nth-child(5) { top: 60%; left: 13%; animation-delay: 4s; font-size: 1rem; }
+.petal:nth-child(6) { top: 40%; right: 12%; animation-delay: 0.8s; font-size: 0.7rem; }
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(8deg); }
+}
+
+.hero-content { position: relative; z-index: 1; }
+
+.tag-pill {
+  display: inline-block;
+  font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase;
+  color: var(--rose-deep);
+  border: 0.5px solid var(--rose);
+  padding: 0.4rem 1.3rem; border-radius: 99px;
+  background: rgba(255,255,255,0.75);
+  margin-bottom: 2rem;
+  animation: fadeUp 1s ease both;
+}
+.hero h1 {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(3.8rem, 11vw, 7.5rem);
+  color: var(--text-dark); line-height: 1.05; margin-bottom: 0.5rem;
+  animation: fadeUp 1s 0.15s ease both;
+}
+.hero h1 em { color: var(--rose-deep); font-style: italic; }
+.hero-date {
+  font-size: 0.9rem; letter-spacing: 0.22em; color: var(--text-light);
+  margin-bottom: 0.7rem; animation: fadeUp 1s 0.3s ease both; text-transform: uppercase;
+}
+.hero-sub {
+  font-size: 1.1rem; font-style: italic; color: var(--taupe); margin-bottom: 2.5rem;
+  animation: fadeUp 1s 0.4s ease both;
+}
+.hero-dots {
+  display: flex; gap: 0.5rem; justify-content: center;
+  animation: fadeUp 1s 0.5s ease both;
+}
+.hero-dot { width: 6px; height: 6px; border-radius: 50%; }
+.hero-dot:nth-child(1) { background: var(--rose); }
+.hero-dot:nth-child(2) { background: var(--gold); }
+.hero-dot:nth-child(3) { background: var(--rose-mid); }
+
+.scroll-hint {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--text-light); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  animation: fadeUp 1.5s 1.2s ease both;
+}
+.scroll-line {
+  width: 0.5px; height: 3rem;
+  background: linear-gradient(to bottom, var(--rose), transparent);
+  animation: scrollLine 2s 1.5s ease-in-out infinite;
+}
+
+/* ── SECTIONS ── */
+.section {
+  position: relative; z-index: 1;
+  padding: 5rem 2rem;
+  max-width: 920px; margin: 0 auto;
+}
+.section-label {
+  font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase;
+  color: var(--rose); margin-bottom: 0.8rem; display: block;
+}
+.divider { display: flex; align-items: center; gap: 1rem; margin: 0.5rem 0 3rem; }
+.divider-line { flex: 1; height: 0.5px; background: var(--rose-mid); }
+.divider-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--rose); }
+
+/* ── COUNTER ── */
+.counter-wrap {
+  background: linear-gradient(135deg, #3a2632 0%, #5a3040 60%, #3a2632 100%);
+  border-radius: 28px; padding: 3.5rem 2rem;
+  text-align: center; position: relative; overflow: hidden;
+  margin: 0 0 5rem;
+  border: 0.5px solid rgba(232,160,176,0.2);
+}
+.counter-wrap::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 60% 60% at 20% 30%, rgba(232,160,176,0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 50% at 80% 70%, rgba(212,169,106,0.12) 0%, transparent 55%);
+}
+.counter-wrap::after {
+  content: '♡';
+  position: absolute; top: -2rem; right: 2rem;
+  font-size: 14rem; color: rgba(232,160,176,0.05); line-height: 1;
+  pointer-events: none; user-select: none;
+}
+.counter-inner { position: relative; z-index: 1; }
+.counter-label { font-size: 0.67rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--rose-mid); margin-bottom: 1rem; }
+.counter-number {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(4rem, 14vw, 7.5rem);
+  color: var(--white); line-height: 1; margin-bottom: 0.5rem;
+}
+.counter-sub { font-size: 1rem; color: rgba(255,255,255,0.4); font-style: italic; margin-bottom: 2.5rem; }
+.counter-date { display: flex; justify-content: center; gap: 3rem; }
+.counter-date-item { text-align: center; }
+.counter-date-item .num {
+  font-family: 'Playfair Display', serif; font-size: 1.8rem;
+  color: var(--rose-mid); display: block; line-height: 1;
+}
+.counter-date-item .lbl {
+  font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.25); margin-top: 0.3rem; display: block;
+}
+
+/* ── LETTER ── */
+.letter-wrap {
+  position: relative; background: var(--white);
+  border-radius: 24px; padding: 3rem 3.5rem;
+  border: 0.5px solid rgba(232,160,176,0.3); overflow: hidden;
+  box-shadow: 0 8px 40px rgba(201,111,138,0.08);
+}
+.letter-wrap::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(to right, var(--rose-mid), var(--rose-deep), var(--rose-mid));
+}
+.letter-top-deco {
+  position: absolute; top: 1rem; right: 2rem;
+  font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--text-light); opacity: 0.6;
+}
+.letter-from { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-light); margin-bottom: 2rem; }
+.letter-greeting { font-family: 'Dancing Script', cursive; font-size: 2.5rem; color: var(--rose-deep); margin-bottom: 1.5rem; line-height: 1.2; }
+.letter-body { font-size: 1.1rem; line-height: 2.1; color: var(--text-mid); font-style: italic; }
+.letter-body p + p { margin-top: 1.3rem; }
+.letter-sign { margin-top: 2.5rem; text-align: right; border-top: 0.5px solid var(--rose-pale); padding-top: 1.5rem; }
+.letter-sign span { font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--rose-deep); }
+.letter-bg-text {
+  position: absolute; bottom: 1rem; left: 2rem;
+  font-family: 'Dancing Script', cursive; font-size: 7rem;
+  color: var(--rose-pale); opacity: 0.6; line-height: 1;
+  user-select: none; pointer-events: none;
+}
+
+/* ── QUOTE ── */
+.quote-block {
+  border-left: 2px solid var(--rose);
+  padding: 1.2rem 2rem;
+  background: linear-gradient(to right, rgba(252,232,239,0.6), rgba(253,240,244,0.3));
+  border-radius: 0 16px 16px 0;
+}
+.quote-block p {
+  font-family: 'Lora', serif; font-size: 1.15rem;
+  color: var(--taupe); font-style: italic; line-height: 1.8;
+}
+.quote-block cite { display: block; margin-top: 0.75rem; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rose); }
+
+/* ── MEMORY TAGS ── */
+.memories-row { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 2rem 0; }
+.mem-tag {
+  font-size: 0.85rem; letter-spacing: 0.06em;
+  padding: 0.4rem 1.1rem; border-radius: 99px;
+  border: 0.5px solid rgba(232,160,176,0.45);
+  color: var(--rose-deep); background: rgba(255,255,255,0.75);
+  font-style: italic; transition: all 0.25s ease; cursor: default;
+}
+.mem-tag:hover { background: var(--rose-pale); transform: translateY(-2px); box-shadow: 0 4px 12px rgba(201,111,138,0.12); }
+
+/* ── PHOTO GRID with filters ── */
+.photo-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem; margin: 2rem 0;
+}
+.photo-slot {
+  border-radius: 18px; overflow: hidden; position: relative;
+  background: var(--rose-pale);
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease;
+}
+.photo-slot:hover { transform: scale(1.01); }
+.photo-slot.tall { grid-row: span 2; aspect-ratio: 3/4; }
+.photo-slot.wide { aspect-ratio: 4/3; }
+.photo-slot input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 3; }
+.photo-slot img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: none; position: absolute; inset: 0;
+  filter: contrast(1.05) saturate(0.85) sepia(0.15) brightness(1.02);
+  transition: filter 0.3s ease;
+}
+.photo-slot:hover img { filter: contrast(1.08) saturate(0.9) sepia(0.1) brightness(1.05); }
+/* pink vignette overlay on photos */
+.photo-slot .photo-tint {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 50%, rgba(201,111,138,0.18) 100%);
+  mix-blend-mode: multiply;
+}
+.photo-placeholder {
+  display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+  color: var(--rose); pointer-events: none; z-index: 1;
+}
+.photo-placeholder svg { width: 26px; height: 26px; opacity: 0.5; }
+.photo-placeholder span { font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); }
+
+/* ── FULL BANNER PHOTO ── */
+.full-photo {
+  position: relative; width: 100%; aspect-ratio: 16/7; overflow: hidden;
+  background: var(--rose-pale);
+  display: flex; align-items: center; justify-content: center;
+}
+.full-photo input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 3; }
+.full-photo img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: none; position: absolute; inset: 0;
+  filter: contrast(1.03) saturate(0.8) sepia(0.2) brightness(1.02);
+}
+.full-photo-placeholder { display: flex; flex-direction: column; align-items: center; gap: 0.75rem; color: var(--taupe); z-index: 1; pointer-events: none; }
+.full-photo-placeholder svg { width: 34px; height: 34px; opacity: 0.4; }
+.full-photo-placeholder p { font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+.full-photo-overlay {
+  position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  background: linear-gradient(to bottom, transparent 30%, rgba(253,240,244,0.88));
+}
+.full-photo-caption {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  z-index: 3; text-align: center; pointer-events: none;
+}
+.full-photo-caption p { font-family: 'Dancing Script', cursive; font-size: 2rem; color: var(--taupe); }
+
+/* ── POLAROIDS ── */
+.polaroid-row { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin: 2rem 0; }
+.polaroid {
+  background: white; padding: 0.85rem 0.85rem 3rem; border-radius: 2px;
+  box-shadow: 0 6px 24px rgba(201,111,138,0.13), 0 1px 4px rgba(201,111,138,0.08);
+  width: 180px; flex-shrink: 0;
+  transform: rotate(-2deg); transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+.polaroid:nth-child(2) { transform: rotate(1.8deg); }
+.polaroid:nth-child(3) { transform: rotate(-1deg); }
+.polaroid:hover { transform: rotate(0deg) scale(1.05); box-shadow: 0 14px 40px rgba(201,111,138,0.2); z-index: 2; }
+/* tiny rose stamp on polaroid */
+.polaroid::after {
+  content: '♡';
+  position: absolute; bottom: 0.7rem; right: 1rem;
+  font-size: 0.85rem; color: var(--rose); opacity: 0.5;
+}
+.polaroid-img {
+  width: 100%; aspect-ratio: 1; background: var(--rose-pale); border-radius: 1px;
+  overflow: hidden; display: flex; align-items: center; justify-content: center; position: relative;
+}
+.polaroid-img input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; z-index: 3; }
+.polaroid-img img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: none; position: absolute; inset: 0;
+  filter: contrast(1.05) saturate(0.75) sepia(0.22) brightness(1.04);
+}
+.polaroid-img-ph {
+  display: flex; flex-direction: column; align-items: center; gap: 0.3rem;
+  color: var(--text-light); font-size: 0.62rem; letter-spacing: 0.1em; text-transform: uppercase;
+  pointer-events: none; z-index: 1; text-align: center;
+}
+.polaroid-label {
+  margin-top: 0.9rem; text-align: center;
+  font-family: 'Dancing Script', cursive; font-size: 1.05rem; color: var(--taupe);
+}
+
+.upload-hint {
+  text-align: center; font-size: 0.76rem; color: var(--text-light);
+  letter-spacing: 0.1em; margin: -1.5rem 0 2.5rem; font-style: italic;
+}
+
+/* ── FOOTER ── */
+.footer { text-align: center; padding: 5rem 2rem 6rem; position: relative; z-index: 1; }
+.footer-line { width: 40px; height: 0.5px; background: var(--rose-mid); margin: 0 auto 2rem; }
+.footer-heart {
+  font-size: 1.4rem; color: var(--rose); margin-bottom: 1rem; display: block;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
+.footer-title { font-family: 'Dancing Script', cursive; font-size: 3rem; color: var(--text-dark); margin-bottom: 0.8rem; }
+.footer-note { font-size: 0.7rem; letter-spacing: 0.24em; color: var(--text-light); text-transform: uppercase; }
+
+/* ── PROFILE STRIP (inspired by ref image 1 bottom bar) ── */
+.profile-strip {
+  background: var(--white); border-top: 0.5px solid var(--rose-mid);
+  border-bottom: 0.5px solid var(--rose-mid);
+  padding: 2rem 3rem; margin: 0 0 5rem;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1.5rem;
+}
+.profile-handles { display: flex; flex-direction: column; gap: 0.3rem; }
+.profile-handles span { font-size: 0.78rem; color: var(--text-mid); }
+.profile-handles em { font-style: normal; color: var(--rose-deep); }
+.profile-magic { display: flex; align-items: center; gap: 0.5rem; }
+.magic-dot { width: 18px; height: 18px; border-radius: 50%; border: 2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.profile-tagline { font-size: 0.68rem; letter-spacing: 0.12em; color: var(--text-light); text-align: right; line-height: 1.7; text-transform: uppercase; }
+.profile-tagline strong { display: block; color: var(--rose-deep); letter-spacing: 0.05em; }
+
+/* ── FILTER SELECTOR (aesthetic touch) ── */
+.filter-row { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 1.5rem; flex-wrap: wrap; }
+.filter-btn {
+  padding: 0.3rem 0.9rem; border-radius: 99px; border: 0.5px solid var(--rose-mid);
+  background: rgba(255,255,255,0.8); font-size: 0.65rem; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--taupe); cursor: pointer; transition: all 0.2s;
+  font-family: 'Cormorant Garamond', serif;
+}
+.filter-btn.active, .filter-btn:hover { background: var(--rose-deep); color: white; border-color: var(--rose-deep); }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scrollLine { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.8; } }
+
+@media (max-width: 600px) {
+  .photo-grid { grid-template-columns: 1fr; }
+  .photo-slot.tall { grid-row: span 1; aspect-ratio: 4/3; }
+  .nav-links { display: none; }
+  .letter-wrap { padding: 2rem 1.5rem; }
+  .polaroid { width: 145px; }
+  .profile-strip { flex-direction: column; align-items: flex-start; }
+  .profile-tagline { text-align: left; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#">M & A ♡</a>
+  <ul class="nav-links">
+    <li><a href="#carta">Carta</a></li>
+    <li><a href="#fotos">Fotos</a></li>
+    <li><a href="#nosotros">Nosotros</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="petal">🌸</div>
+  <div class="petal">✦</div>
+  <div class="petal">🌸</div>
+  <div class="petal">✦</div>
+  <div class="petal">🌸</div>
+  <div class="petal">✦</div>
+  <div class="hero-content">
+    <span class="tag-pill">✦ 22 · 12 · 2024 ✦</span>
+    <h1>Maryorie<br><em>&</em> Anthony</h1>
+    <p class="hero-date">22 de diciembre del 2024</p>
+    <p class="hero-sub">Un año de recordar para siempre</p>
+    <div class="hero-dots">
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+      <div class="hero-dot"></div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ── COUNTER ── -->
+<section class="section" id="nosotros">
+  <div class="counter-wrap">
+    <div class="counter-inner">
+      <p class="counter-label">llevamos juntos</p>
+      <div class="counter-number" id="dayCount">—</div>
+      <p class="counter-sub">días que no cambiaría por nada</p>
+      <div class="counter-date">
+        <div class="counter-date-item">
+          <span class="num" id="monthCount">—</span>
+          <span class="lbl">meses</span>
+        </div>
+        <div class="counter-date-item">
+          <span class="num" id="weekCount">—</span>
+          <span class="lbl">semanas</span>
+        </div>
+        <div class="counter-date-item">
+          <span class="num" id="hourCount">—</span>
+          <span class="lbl">horas</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LETTER ── -->
+<section class="section" id="carta">
+  <span class="section-label">✦ para ti</span>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+  <div class="letter-wrap">
+    <p class="letter-top-deco">#anniversary · #bestlove</p>
+    <p class="letter-from">De: Maryorie &nbsp;—&nbsp; Para: Mi niño Anthony</p>
+    <div class="letter-greeting">Mi amorcito,</div>
+    <div class="letter-body">
+      <p>Te amo con todo lo que soy y con todo lo que viene después. A pesar de cualquier tormenta, de cualquier distancia, de cualquier cosa que la vida nos ponga enfrente — siempre termino en el mismo lugar: pensando en ti.</p>
+      <p>Adoro recordar cuando me mirabas con esos ojos… esos ojos llenos de un deseo tan tierno de besarme. Había algo en tu mirada que me deshacía por dentro, aunque intentara disimularlo. Eras tan lindo conquistándome, ganándote mi atención poco a poco, con esa paciencia que solo tú tienes y esa ternura que me llegó al alma sin pedirle permiso.</p>
+      <p>Me encanta que existan esos momentos quietos entre nosotros — cuando no necesitamos decir nada y aún así todo se siente completo. Cada carcajada tuya es mi canción favorita. Cada vez que me tomas de la mano, siento que el mundo puede hacer lo que quiera, porque contigo estoy bien.</p>
+      <p>Gracias por elegirme, por quedarte, por mostrarme que el amor también puede sentirse seguro y suave. Gracias por cada abrazo que dura un poco más de la cuenta, por cada "¿estás bien?" dicho con los ojos antes que con la boca.</p>
+      <p>Este año fue nuestro, y todos los que vienen también lo serán. Siempre seremos tú y yo, mi amor.</p>
+    </div>
+    <div class="letter-sign"><span>Con todo mi amor, Maryorie ♡</span></div>
+    <div class="letter-bg-text">amor</div>
+  </div>
+</section>
+
+<!-- ── QUOTE ── -->
+<section class="section">
+  <div class="quote-block">
+    <p>"Las nubes y el sol son opuestos, pero juntos crean el cielo más hermoso. Así somos nosotros."</p>
+    <cite>M & A · 22.12.2024</cite>
+  </div>
+</section>
+
+<!-- ── PROFILE STRIP ── -->
+<div class="profile-strip">
+  <div class="profile-handles">
+    <span>PROFILES :</span>
+    <span><em>· @maryorie</em></span>
+    <span><em>· @anthony</em></span>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:0.4rem;">
+    <span style="font-size:0.68rem;letter-spacing:0.18em;color:var(--text-light);text-transform:uppercase;">Magic colors :</span>
+    <div class="profile-magic">
+      <div class="magic-dot" style="background:#e8a0b0;"></div>
+      <div class="magic-dot" style="background:#fce8ef;"></div>
+      <div class="magic-dot" style="background:#d4a96a;"></div>
+      <div class="magic-dot" style="background:#3a2632;"></div>
+    </div>
+  </div>
+  <div class="profile-tagline">
+    <strong>IT WILL ALWAYS BE</strong>
+    the two of us · 365 days · special
+  </div>
+</div>
+
+<!-- ── MEMORY TAGS ── -->
+<section class="section">
+  <span class="section-label">✦ lo que somos</span>
+  <div class="memories-row">
+    <span class="mem-tag">#nuestrahistoria</span>
+    <span class="mem-tag">#miamorcito</span>
+    <span class="mem-tag">#esosojos</span>
+    <span class="mem-tag">#22dediciembre</span>
+    <span class="mem-tag">#minyio</span>
+    <span class="mem-tag">#siempretúyyo</span>
+    <span class="mem-tag">#momentostiernos</span>
+    <span class="mem-tag">#365días</span>
+    <span class="mem-tag">#sunandcloud</span>
+    <span class="mem-tag">#special</span>
+  </div>
+</section>
+
+<!-- ── PHOTO GRID ── -->
+<section class="section" id="fotos">
+  <span class="section-label">✦ nuestra galería</span>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+  <p class="upload-hint">Haz clic en cada cuadro para subir tus fotos ✦</p>
+
+  <!-- filter selector -->
+  <div class="filter-row">
+    <button class="filter-btn active" onclick="setFilter('film')">Film</button>
+    <button class="filter-btn" onclick="setFilter('soft')">Soft</button>
+    <button class="filter-btn" onclick="setFilter('warm')">Warm</button>
+    <button class="filter-btn" onclick="setFilter('rose')">Rose</button>
+    <button class="filter-btn" onclick="setFilter('none')">Natural</button>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-slot tall" id="slot1">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'slot1')">
+      <img id="img-slot1" class="filterable">
+      <div class="photo-tint"></div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>foto principal</span>
+      </div>
+    </div>
+    <div class="photo-slot wide" id="slot2">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'slot2')">
+      <img id="img-slot2" class="filterable">
+      <div class="photo-tint"></div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>los dos</span>
+      </div>
+    </div>
+    <div class="photo-slot wide" id="slot3">
+      <input type="file" accept="image/*" onchange="loadPhoto(this,'slot3')">
+      <img id="img-slot3" class="filterable">
+      <div class="photo-tint"></div>
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        <span>un momento</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FULL BANNER ── -->
+<div class="full-photo" id="banner">
+  <input type="file" accept="image/*" onchange="loadPhoto(this,'banner')">
+  <img id="img-banner" class="filterable">
+  <div class="full-photo-placeholder">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+    <p>foto panorámica — clic para subir</p>
+  </div>
+  <div class="full-photo-overlay"></div>
+  <div class="full-photo-caption"><p>nosotros, siempre ♡</p></div>
+</div>
+
+<!-- ── POLAROIDS ── -->
+<section class="section">
+  <span class="section-label">✦ momentos</span>
+  <div class="divider"><div class="divider-line"></div><div class="divider-dot"></div><div class="divider-line"></div></div>
+  <p class="upload-hint">Tus fotos favoritas de este año</p>
+  <div class="polaroid-row">
+    <div class="polaroid">
+      <div class="polaroid-img" id="pol1">
+        <input type="file" accept="image/*" onchange="loadPhoto(this,'pol1')">
+        <img id="img-pol1" class="filterable">
+        <div class="polaroid-img-ph">📷<br>subir foto</div>
+      </div>
+      <div class="polaroid-label">ese día contigo</div>
+    </div>
+    <div class="polaroid">
+      <div class="polaroid-img" id="pol2">
+        <input type="file" accept="image/*" onchange="loadPhoto(this,'pol2')">
+        <img id="img-pol2" class="filterable">
+        <div class="polaroid-img-ph">📷<br>subir foto</div>
+      </div>
+      <div class="polaroid-label">mi parte favorita</div>
+    </div>
+    <div class="polaroid">
+      <div class="polaroid-img" id="pol3">
+        <input type="file" accept="image/*" onchange="loadPhoto(this,'pol3')">
+        <img id="img-pol3" class="filterable">
+        <div class="polaroid-img-ph">📷<br>subir foto</div>
+      </div>
+      <div class="polaroid-label">felices los dos</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="footer">
+  <div class="footer-line"></div>
+  <span class="footer-heart">♡</span>
+  <div class="footer-title">Maryorie & Anthony</div>
+  <p class="footer-note">22 · 12 · 2024 &nbsp;·&nbsp; Siempre tú y yo</p>
+</footer>
+
+<script>
+  // ── Counter (fecha real: 22 dic 2024) ──
+  const anniversary = new Date('2024-12-22');
+  const now = new Date();
+  const diffMs = now - anniversary;
+  const days = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+  const months = Math.floor(days / 30.44);
+  const weeks = Math.floor(days / 7);
+  const hours = Math.floor(diffMs / (1000 * 60 * 60));
+
+  document.getElementById('dayCount').textContent = days > 0 ? days.toLocaleString() : '0';
+  document.getElementById('monthCount').textContent = months > 0 ? months : '0';
+  document.getElementById('weekCount').textContent = weeks > 0 ? weeks.toLocaleString() : '0';
+  document.getElementById('hourCount').textContent = hours > 0 ? hours.toLocaleString() : '0';
+
+  // ── Photo upload ──
+  function loadPhoto(input, slotId) {
+    const file = input.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = document.getElementById('img-' + slotId);
+      img.src = e.target.result;
+      img.style.display = 'block';
+      applyCurrentFilter(img);
+      const ph = input.parentElement.querySelector('.photo-placeholder,.full-photo-placeholder,.polaroid-img-ph');
+      if (ph) ph.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  }
+
+  // ── Filter system ──
+  const filters = {
+    film:    'contrast(1.05) saturate(0.75) sepia(0.22) brightness(1.04)',
+    soft:    'contrast(0.95) saturate(0.7)  sepia(0.08) brightness(1.08) blur(0.3px)',
+    warm:    'contrast(1.06) saturate(0.85) sepia(0.3)  brightness(1.03)',
+    rose:    'contrast(1.04) saturate(0.65) sepia(0.15) brightness(1.05) hue-rotate(-10deg)',
+    none:    'none',
+  };
+  let currentFilter = 'film';
+
+  function setFilter(name) {
+    currentFilter = name;
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    event.target.classList.add('active');
+    document.querySelectorAll('.filterable').forEach(img => {
+      if (img.style.display !== 'none') applyCurrentFilter(img);
+    });
+  }
+  function applyCurrentFilter(img) {
+    img.style.filter = filters[currentFilter];
+  }
+</script>
+</body>
+</html>
